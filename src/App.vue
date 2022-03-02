@@ -5,6 +5,10 @@
         <div class="columns">
           <div class="column is-3 lista-de-conversas">
             <div class="barra-superior"></div>
+            <div class="item" v-for="(conversa, index) in conversas" :key="index">
+              <div class="title is-6">{{conversa.usuario}}</div>
+              <div class="subtitle is-6">Ultima Mensagem...</div>
+            </div>
           </div>
           <div class="column conversa-ativa">
             <div class="barra-superior">
@@ -16,6 +20,19 @@
     </div>
   </div>
 </template>
+
+<script>
+  import conversasIniciais from './conversasIniciais.js';
+
+  export default {
+    data: function() {
+      return {
+        conversas: conversasIniciais
+      }
+    }
+  }
+</script>
+
 
 <style scoped>
   .columns {
@@ -47,5 +64,16 @@
     line-height: 50px;
     margin-left: 25px;
     font-weight: 500;
+  }
+
+  .item {
+    border-bottom: 1px solid #F2F2F2;
+    padding: 15px 30px;
+    margin-bottom: 0 !important;
+  }
+
+  .item:hover {
+    background: #F5F5F5;
+    cursor: pointer;
   }
 </style>
